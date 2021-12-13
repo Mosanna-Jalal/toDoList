@@ -41,7 +41,8 @@ const listSchema={
 };
 
 const List= mongoose.model("List",listSchema);
-
+const d = new Date();
+let text = d.toLocaleDateString();
 app.get("/",function(req,res){
 
 Item.find({},function(err,foundItems){
@@ -61,7 +62,7 @@ Item.find({},function(err,foundItems){
       res.redirect("/");
     }
     else{
-      res.render("list",{listTitle: "Today" , newListItems : foundItems});
+      res.render("list",{listTitle: text , newListItems : foundItems});
     }
 
   }
